@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API.Authentication</name>
+    </assembly>
+    <members>
+        <member name="M:API.Authentication.Attributes.ValidatorActionFilter.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            On action executing
+            </summary>
+            <param name="filterContext"></param>
+        </member>
+        <member name="M:API.Authentication.Attributes.ValidatorActionFilter.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            After action is executed
+            </summary>
+            <param name="filterContext"></param>
+        </member>
+        <member name="F:API.Authentication.Controllers.UsersController._userService">
+            <summary>
+            User service
+            </summary>
+        </member>
+        <member name="M:API.Authentication.Controllers.UsersController.#ctor(Business.Authentication.Services.UserService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userService"></param>
+        </member>
+        <member name="M:API.Authentication.Controllers.UsersController.Authenticate(Business.Authentication.Models.AuthenticateRequest)">
+            <summary>
+            Authenticate
+            </summary>
+            <param name="authenticate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Authentication.Controllers.UsersController.List(Common.Pagination.Models.PaginationParams)">
+            <summary>
+            List users
+            </summary>
+            <param name="pagination"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Authentication.Controllers.UsersController.Get(System.Int32)">
+            <summary>
+            Get user
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Authentication.Controllers.UsersController.Post(API.Authentication.DTO.Users.CreateUserDTO)">
+            <summary>
+            Create user
+            </summary>
+            <param name="createUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Authentication.Controllers.UsersController.Put(System.Int32,API.Authentication.DTO.Users.UpdateUserDTO)">
+            <summary>
+            Update user
+            </summary>
+            <param name="id"></param>
+            <param name="updateUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Authentication.Controllers.UsersController.Delete(System.Int32)">
+            <summary>
+            Delete user
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.CreateUserDTO.FirstName">
+            <summary>
+            First name
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.CreateUserDTO.LastName">
+            <summary>
+            Last name
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.CreateUserDTO.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.CreateUserDTO.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.UpdateUserDTO.FirstName">
+            <summary>
+            First name
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.UpdateUserDTO.LastName">
+            <summary>
+            Last name
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.UpdateUserDTO.Status">
+            <summary>
+            Status
+            <para>1: Active</para>
+            <para>0: Undefined</para>
+            <para>-1: Disabled</para>
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.UserDTO.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.UserDTO.FirstName">
+            <summary>
+            First name
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.UserDTO.LastName">
+            <summary>
+            Last name
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.UserDTO.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.UserDTO.Status">
+            <summary>
+            Status
+            <para>1: Active</para>
+            <para>0: Undefined</para>
+            <para>-1: Disabled</para>
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.UserDTO.CreateDate">
+            <summary>
+            Create date
+            </summary>
+        </member>
+        <member name="P:API.Authentication.DTO.Users.UserDTO.UpdateDate">
+            <summary>
+            Update date
+            </summary>
+        </member>
+    </members>
+</doc>

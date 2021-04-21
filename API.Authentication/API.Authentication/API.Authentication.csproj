@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>G:\Projetos\.NET\APIS\API.Authentication\API.Authentication\API.Authentication.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.5.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Business.Authentication">
+      <HintPath>..\..\..\Business\Business.Authentication\Business.Authentication\bin\Debug\net5.0\Business.Authentication.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Encoding">
+      <HintPath>..\..\..\Common\Common.Encoding\Common.Encoding\bin\Debug\net5.0\Common.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Pagination">
+      <HintPath>..\..\..\Common\Common.Pagination\Common.Pagination\bin\Debug\net5.0\Common.Pagination.dll</HintPath>
+    </Reference>
+    <Reference Include="Data.Authentication">
+      <HintPath>..\..\..\Data\Data.Authentication\Data.Authentication\bin\Debug\net5.0\Data.Authentication.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
