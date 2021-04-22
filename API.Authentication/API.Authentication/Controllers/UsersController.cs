@@ -1,6 +1,7 @@
 ﻿namespace API.Authentication.Controllers
 {
     using API.Authentication.DTO.Users;
+    using Business.Authentication.Attributes;
     using Business.Authentication.Middleware;
     using Business.Authentication.Models;
     using Business.Authentication.Services;
@@ -58,7 +59,7 @@
         /// <param name="pagination"></param>
         /// <returns></returns>
         [HttpGet("List")]
-        [ServiceFilter(typeof(Authorize))]
+        [Authorize]
         public ActionResult List([FromQuery] PaginationParams pagination)
         {
             try

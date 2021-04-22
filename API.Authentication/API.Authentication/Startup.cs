@@ -24,15 +24,16 @@ namespace API.Authentication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddCors();
+
+            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API.Authentication", Version = "v1" });
             });
 
             services.AddDbContext<AuthenticationDbContext>(options => options.UseNpgsql(Configuration["ConnectionStrings:AuthConnectionString"]));
-
-            services.AddScoped<Authorize>();
 
             services.AddScoped<UserService>();
 
@@ -65,6 +66,9 @@ namespace API.Authentication
             app.UseRouting();
 
             app.UseAuthorization();
+
+            //Middleware
+            app.UseMiddleware<AuthenticationMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
