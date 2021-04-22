@@ -16,9 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Business.Authentication">
-      <HintPath>..\..\..\Business\Business.Authentication\Business.Authentication\bin\Debug\net5.0\Business.Authentication.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\..\Business\Business.Authentication\Business.Authentication\Business.Authentication.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Common.Encoding">
       <HintPath>..\..\..\Common\Common.Encoding\Common.Encoding\bin\Debug\net5.0\Common.Encoding.dll</HintPath>
     </Reference>
