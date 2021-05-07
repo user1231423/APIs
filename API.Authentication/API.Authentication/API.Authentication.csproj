@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Business\Business.Authentication\Business.Authentication\Business.Authentication.csproj" />
     <ProjectReference Include="..\..\..\Common\Common.ExceptionHandler\Common.ExceptionHandler\Common.ExceptionHandler.csproj" />
+    <ProjectReference Include="..\..\..\Data\Data.Authentication.Globalization\Data.Authentication.Globalization\Data.Authentication.Globalization.csproj" />
     <ProjectReference Include="..\..\..\Data\Data.Authentication\Data.Authentication\Data.Authentication.csproj" />
   </ItemGroup>
 
