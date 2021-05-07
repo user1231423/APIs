@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Authentication", "API.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business.Authentication", "..\..\Business\Business.Authentication\Business.Authentication\Business.Authentication.csproj", "{49883890-44E9-431B-A039-3E213629E4D3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Authentication", "..\..\Data\Data.Authentication\Data.Authentication\Data.Authentication.csproj", "{CC7329C0-4450-49E7-A82E-5CDF76966933}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.ExceptionHandler", "..\..\Common\Common.ExceptionHandler\Common.ExceptionHandler\Common.ExceptionHandler.csproj", "{521EEF09-D1A9-4117-B5A1-BB07C0C7F99A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Authentication.Globalization", "Data.Authentication.Globalization\Data.Authentication.Globalization.csproj", "{CB62D466-0E72-4D72-B3E5-8242DB5D397A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{49883890-44E9-431B-A039-3E213629E4D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49883890-44E9-431B-A039-3E213629E4D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49883890-44E9-431B-A039-3E213629E4D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC7329C0-4450-49E7-A82E-5CDF76966933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC7329C0-4450-49E7-A82E-5CDF76966933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC7329C0-4450-49E7-A82E-5CDF76966933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC7329C0-4450-49E7-A82E-5CDF76966933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{521EEF09-D1A9-4117-B5A1-BB07C0C7F99A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{521EEF09-D1A9-4117-B5A1-BB07C0C7F99A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{521EEF09-D1A9-4117-B5A1-BB07C0C7F99A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{521EEF09-D1A9-4117-B5A1-BB07C0C7F99A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB62D466-0E72-4D72-B3E5-8242DB5D397A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB62D466-0E72-4D72-B3E5-8242DB5D397A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB62D466-0E72-4D72-B3E5-8242DB5D397A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB62D466-0E72-4D72-B3E5-8242DB5D397A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

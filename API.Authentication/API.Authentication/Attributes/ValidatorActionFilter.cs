@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace API.Authentication.Attributes
 {
+    /// <summary>
+    /// Validator action filter
+    /// </summary>
     public class ValidatorActionFilter : IActionFilter
     {
         /// <summary>

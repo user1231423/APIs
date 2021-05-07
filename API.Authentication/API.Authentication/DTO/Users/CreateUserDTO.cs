@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace API.Authentication.DTO.Users
 {
+    /// <summary>
+    /// Create user
+    /// </summary>
     public class CreateUserDTO
     {
         /// <summary>

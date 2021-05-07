@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace API.Authentication.DTO.Users
 {
+    /// <summary>
+    /// Update user
+    /// </summary>
     public class UpdateUserDTO
     {
         /// <summary>

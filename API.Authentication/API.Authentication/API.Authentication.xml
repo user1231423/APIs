@@ -4,6 +4,11 @@
         <name>API.Authentication</name>
     </assembly>
     <members>
+        <member name="T:API.Authentication.Attributes.ValidatorActionFilter">
+            <summary>
+            Validator action filter
+            </summary>
+        </member>
         <member name="M:API.Authentication.Attributes.ValidatorActionFilter.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
             <summary>
             On action executing
@@ -15,6 +20,11 @@
             After action is executed
             </summary>
             <param name="filterContext"></param>
+        </member>
+        <member name="T:API.Authentication.Controllers.UsersController">
+            <summary>
+            User controller
+            </summary>
         </member>
         <member name="F:API.Authentication.Controllers.UsersController._userService">
             <summary>
@@ -70,6 +80,11 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:API.Authentication.DTO.Users.CreateUserDTO">
+            <summary>
+            Create user
+            </summary>
+        </member>
         <member name="P:API.Authentication.DTO.Users.CreateUserDTO.FirstName">
             <summary>
             First name
@@ -90,6 +105,11 @@
             Password
             </summary>
         </member>
+        <member name="T:API.Authentication.DTO.Users.UpdateUserDTO">
+            <summary>
+            Update user
+            </summary>
+        </member>
         <member name="P:API.Authentication.DTO.Users.UpdateUserDTO.FirstName">
             <summary>
             First name
@@ -106,6 +126,11 @@
             <para>1: Active</para>
             <para>0: Undefined</para>
             <para>-1: Disabled</para>
+            </summary>
+        </member>
+        <member name="T:API.Authentication.DTO.Users.UserDTO">
+            <summary>
+            User
             </summary>
         </member>
         <member name="P:API.Authentication.DTO.Users.UserDTO.Id">

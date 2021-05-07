@@ -17,6 +17,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Business\Business.Authentication\Business.Authentication\Business.Authentication.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.ExceptionHandler\Common.ExceptionHandler\Common.ExceptionHandler.csproj" />
+    <ProjectReference Include="..\..\..\Data\Data.Authentication\Data.Authentication\Data.Authentication.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,9 +27,6 @@
     </Reference>
     <Reference Include="Common.Pagination">
       <HintPath>..\..\..\Common\Common.Pagination\Common.Pagination\bin\Debug\net5.0\Common.Pagination.dll</HintPath>
-    </Reference>
-    <Reference Include="Data.Authentication">
-      <HintPath>..\..\..\Data\Data.Authentication\Data.Authentication\bin\Debug\net5.0\Data.Authentication.dll</HintPath>
     </Reference>
   </ItemGroup>
 
