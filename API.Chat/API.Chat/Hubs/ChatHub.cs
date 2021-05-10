@@ -58,7 +58,7 @@ namespace API.Chat.Hubs
             }
             catch (Exception ex)
             {
-                await Clients.Client(Context.ConnectionId).SendAsync("ErrorReceived", new { message = e.Message.ToString() });
+                await Clients.Client(Context.ConnectionId).SendAsync("ErrorReceived", new { message = ex.Message.ToString() });
             }
         }
     }
