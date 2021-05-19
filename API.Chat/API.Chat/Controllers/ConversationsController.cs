@@ -7,6 +7,7 @@
     using Common.ExceptionHandler.Exceptions;
     using Common.Pagination;
     using Common.Pagination.Models;
+    using Data.Chat.Globalization.Errors;
     using Data.Chat.Models;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.SignalR;
@@ -67,7 +68,7 @@
             var user = _userService.Load(userId);
 
             if (user == null)
-                return NotFound(new { message = "User not found" });
+                return NotFound(new { message = Errors.UserNotFound });
 
             var userConversationFilter = new UserConversationFilter()
             {
@@ -102,13 +103,13 @@
         public ActionResult CreateConversation(CreateConversationDTO createConversation)
         {
             if (createConversation.Users.Count != createConversation.Users.Distinct().Count())
-                return BadRequest(new { message = "Duplicate user ids found" });
+                return BadRequest(new { message = Errors.DuplicateUserIds });
 
             //Load users by ids
             var users = _userService.LoadByIds(createConversation.Users);
 
             if (users.Count != createConversation.Users.Count)
-                return BadRequest(new { message = "Inválid user ids found" });
+                return BadRequest(new { message = Errors.InvalidUserIds });
 
             var conversation = new Conversation()
             {
@@ -140,7 +141,7 @@
             var conversation = _conversationService.Load(id, false, false, false, false);
 
             if (conversation == null)
-                return NotFound( new { message = "Conversation not found" });
+                return NotFound( new { message = Errors.ConversationNotFound });
 
             conversation.Name = updateConversation.Name;
 

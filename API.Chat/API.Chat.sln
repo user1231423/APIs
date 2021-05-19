@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business.Chat", "..\..\Busi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Pagination", "..\..\Common\Common.Pagination\Common.Pagination\Common.Pagination.csproj", "{05318131-7C11-4576-BC05-DE8DBBCD0008}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Chat.Globalization", "..\..\Data\Data.Chat.Globalization\Data.Chat.Globalization\Data.Chat.Globalization.csproj", "{007AB41C-8675-4304-BEB9-9C32482E89B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{05318131-7C11-4576-BC05-DE8DBBCD0008}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05318131-7C11-4576-BC05-DE8DBBCD0008}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05318131-7C11-4576-BC05-DE8DBBCD0008}.Release|Any CPU.Build.0 = Release|Any CPU
+		{007AB41C-8675-4304-BEB9-9C32482E89B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{007AB41C-8675-4304-BEB9-9C32482E89B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{007AB41C-8675-4304-BEB9-9C32482E89B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{007AB41C-8675-4304-BEB9-9C32482E89B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

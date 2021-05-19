@@ -1,10 +1,13 @@
 using API.Chat.Attributes;
+using Business.Chat.Services;
 using Common.ExceptionHandler.Middleware;
+using Data.Chat;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -53,6 +56,16 @@ namespace API.Chat
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API.Chat", Version = "v1" });
             });
+
+            services.AddDbContext<ChatDbContext>(options => options.UseNpgsql(Configuration["ConnectionStrings:ChatConnectionString"]));
+
+            services.AddScoped<ConversationService>();
+            services.AddScoped<InvitedUserService>();
+            services.AddScoped<KickedUserService>();
+            services.AddScoped<MessageService>();
+            services.AddScoped<ReadMessageService>();
+            services.AddScoped<UserConversationService>();
+            services.AddScoped<UserService>();
 
             services.AddMvc(options =>
             {

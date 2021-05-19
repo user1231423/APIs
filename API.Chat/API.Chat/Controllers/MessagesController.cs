@@ -5,6 +5,7 @@
     using Business.Chat.Filters;
     using Business.Chat.Services;
     using Common.Pagination.Models;
+    using Data.Chat.Globalization.Errors;
     using Data.Chat.Models;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.SignalR;
@@ -69,7 +70,7 @@
             var user = _userService.Load(userId);
 
             if(user == null)
-                return NotFound(new { message = "User not found" });
+                return NotFound(new { message = Errors.UserNotFound });
 
             var userConversation = _userConversationService.Filter(new UserConversationFilter() {
                 ConversationId = conversationId,
@@ -80,7 +81,7 @@
             }, new PaginationParams() { CurrentPage = 1, PageSize = 1 }).FirstOrDefault();
 
             if(userConversation == null)
-                return NotFound(new { message = "User conversation not found or is not active" });
+                return NotFound(new { message = Errors.UserConversationNotFoundOrIsNotActive });
 
             var conversationMessages = _messageService.Filter(new MessageFilter()
             {
@@ -111,25 +112,25 @@
             var author = _userService.Load(sendMessage.UserId);
 
             if (author == null)
-                return NotFound(new { message = "User not found" });
+                return NotFound(new { message = Errors.UserNotFound });
 
             //Load conversation
             var conversation = _conversationService.Load(sendMessage.ConversationId, false, true, false, false);
 
             if (conversation == null)
-                return NotFound(new { message = "Conversation not found" });
+                return NotFound(new { message = Errors.ConversationNotFound });
 
             //Find user conversation
             var userConversation = conversation.Users.Where(x => x.UserId == sendMessage.UserId).FirstOrDefault();
 
             if (userConversation == null)
-                return NotFound(new { message = "User conversation not found" });
+                return NotFound(new { message = Errors.UserConversationNotFound });
 
             if (userConversation.Status == -1)
-                return BadRequest(new { message = "User was kicked" });
+                return BadRequest(new { message = Errors.UserWasKicked });
 
             if (userConversation.Status == -2)
-                return BadRequest(new { message = "User left the conversation" });
+                return BadRequest(new { message = Errors.UserLeftTheConversation });
 
             //Create message
             var message = new Message()
@@ -168,13 +169,13 @@
             var updatingUser = _userService.Load(updateMessage.UserId);
 
             if (updatingUser == null)
-                return NotFound(new { message = "User not found" });
+                return NotFound(new { message = Errors.UserNotFound });
 
             //Load message
             var message = _messageService.Load(id);
 
             if (message == null)
-                return NotFound(new { message = "Message not found" });
+                return NotFound(new { message = Errors.MessageNotFound });
 
             if (!string.IsNullOrEmpty(updateMessage.Body))
                 message.Body = updateMessage.Body;
@@ -203,7 +204,7 @@
             var message = _messageService.Load(id);
 
             if (message == null)
-                return NotFound(new { message = "Message not found" });
+                return NotFound(new { message = Errors.MessageNotFound });
 
             await _messageService.Delete(id);
 
