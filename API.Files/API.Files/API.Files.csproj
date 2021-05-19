@@ -12,4 +12,10 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Business\Business.Files\Business.Files\Business.Files.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.ExceptionHandler\Common.ExceptionHandler\Common.ExceptionHandler.csproj" />
+    <ProjectReference Include="..\..\..\Data\Data.Files\Data.Files\Data.Files.csproj" />
+  </ItemGroup>
+
 </Project>
