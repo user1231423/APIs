@@ -1,6 +1,7 @@
 ﻿namespace API.Chat.Controllers
 {
     using API.Chat.DTO.Conversation;
+    using API.Chat.Hubs;
     using Business.Chat.Filters;
     using Business.Chat.Services;
     using Common.ExceptionHandler.Exceptions;
@@ -8,6 +9,7 @@
     using Common.Pagination.Models;
     using Data.Chat.Models;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.SignalR;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
@@ -37,14 +39,20 @@
         private readonly ConversationService _conversationService;
 
         /// <summary>
+        /// Chat hub
+        /// </summary>
+        private readonly IHubContext<ChatHub> _chatHub;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="userConversationService"></param>
-        public ConversationsController(UserConversationService userConversationService, UserService userService, ConversationService conversationService)
+        public ConversationsController(UserConversationService userConversationService, UserService userService, ConversationService conversationService, IHubContext<ChatHub> hub)
         {
             _userConversationService = userConversationService;
             _userService = userService;
             _conversationService = conversationService;
+            _chatHub = hub;
         }
 
         /// <summary>
@@ -59,7 +67,7 @@
             var user = _userService.Load(userId);
 
             if (user == null)
-                throw new BadRequestException("User not found");
+                return NotFound(new { message = "User not found" });
 
             var userConversationFilter = new UserConversationFilter()
             {
@@ -94,13 +102,13 @@
         public ActionResult CreateConversation(CreateConversationDTO createConversation)
         {
             if (createConversation.Users.Count != createConversation.Users.Distinct().Count())
-                throw new BadRequestException("Duplicate user ids found");
+                return BadRequest(new { message = "Duplicate user ids found" });
 
             //Load users by ids
             var users = _userService.LoadByIds(createConversation.Users);
 
             if (users.Count != createConversation.Users.Count)
-                throw new BadRequestException("Inválid user ids found");
+                return BadRequest(new { message = "Inválid user ids found" });
 
             var conversation = new Conversation()
             {
@@ -132,7 +140,7 @@
             var conversation = _conversationService.Load(id, false, false, false, false);
 
             if (conversation == null)
-                throw new NotFoundException("Conversation not found");
+                return NotFound( new { message = "Conversation not found" });
 
             conversation.Name = updateConversation.Name;
 
