@@ -1,10 +1,13 @@
 using API.Files.Attributes;
+using Business.Files.Services;
 using Common.ExceptionHandler.Middleware;
+using Data.Files;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -53,6 +56,10 @@ namespace API.Files
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API.Files", Version = "v1" });
             });
+
+            services.AddDbContext<FilesDbContext>(options => options.UseNpgsql(Configuration["ConnectionStrings:FilesConnectionString"]));
+
+            services.AddScoped<FileService>();
 
             services.AddMvc(options =>
             {
