@@ -1,4 +1,5 @@
 ﻿using API.Files.DTO;
+using Business.Files.Interfaces;
 using Business.Files.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace API.Files.Controllers
 {
+    /// <summary>
+    /// Files controller
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class FilesController : ControllerBase
@@ -16,15 +20,15 @@ namespace API.Files.Controllers
         /// <summary>
         /// File service
         /// </summary>
-        private readonly FileService _fileService;
+        private readonly IFileService _fileService;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="fileService"></param>
-        public FilesController(FileService fileService)
+        public FilesController(IFileService fileService)
         {
-            _fileService = fileService;
+            _fileService = fileService ?? throw new ArgumentNullException(nameof(fileService));
         }
 
         /// <summary>
@@ -33,9 +37,9 @@ namespace API.Files.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult GetFile(int id)
+        public async Task<ActionResult> GetFile(int id)
         {
-            var file = _fileService.Load(id);
+            var file = await _fileService.Load(id);
 
             if (file == null)
                 return NotFound(new { message = "File not found" });
@@ -57,9 +61,9 @@ namespace API.Files.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}/Download")]
-        public ActionResult DownloadFile(int id)
+        public async Task<ActionResult> DownloadFile(int id)
         {
-            var file = _fileService.Load(id);
+            var file = await _fileService.Load(id);
 
             if (file == null)
                 return NotFound(new { message = "File not found" });
@@ -103,7 +107,7 @@ namespace API.Files.Controllers
         [HttpPut("{id}/OriginalName")]
         public async Task<ActionResult> UpdateFile(int id, UpdateFileDTO updateFile)
         {
-            var oldFile = _fileService.Load(id);
+            var oldFile = await _fileService.Load(id);
 
             if (oldFile == null)
                 return NotFound(new { message = "File not found" });

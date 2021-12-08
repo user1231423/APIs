@@ -34,7 +34,7 @@
         /// <exception cref="ArgumentNullException"></exception>
         public UsersController(IUserService userService)
         {
-            _userService = userService ?? throw new ArgumentNullException(nameof(userService)); ;
+            _userService = userService ?? throw new ArgumentNullException(nameof(userService));
         }
 
         /// <summary>

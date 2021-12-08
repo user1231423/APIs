@@ -1,4 +1,5 @@
 using API.Files.Attributes;
+using API.Files.Configuration;
 using Business.Files.Services;
 using Common.ExceptionHandler.Middleware;
 using Data.Files;
@@ -21,34 +22,34 @@ using System.Threading.Tasks;
 
 namespace API.Files
 {
+    /// <summary>
+    /// Startup
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Startup
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Configuration
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
 
-            // Register cultures
-            services.Configure<RequestLocalizationOptions>(
-                opts =>
-                {
-                    var supportedCultures = new List<CultureInfo>
-                    {
-                        new CultureInfo("en_US"),
-                        new CultureInfo("pt_PT")
-                    };
-
-                    opts.DefaultRequestCulture = new RequestCulture("en_US");
-                    opts.SupportedCultures = supportedCultures;
-                    opts.SupportedUICultures = supportedCultures;
-                });
+            services.ConfigureCulture();
 
             services.AddControllers();
 
@@ -57,9 +58,9 @@ namespace API.Files
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API.Files", Version = "v1" });
             });
 
-            services.AddDbContext<FilesDbContext>(options => options.UseNpgsql(Configuration["ConnectionStrings:FilesConnectionString"]));
+            services.AddDbContext(Configuration);
 
-            services.AddScoped<FileService>();
+            services.AddServices();
 
             services.AddMvc(options =>
             {
@@ -67,7 +68,11 @@ namespace API.Files
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // Global Cors Policy

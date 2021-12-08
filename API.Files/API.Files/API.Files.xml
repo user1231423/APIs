@@ -21,12 +21,43 @@
             </summary>
             <param name="filterContext"></param>
         </member>
+        <member name="M:API.Files.Configuration.ConfigurationExtensions.ConfigureCulture(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configure culture
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:API.Files.Configuration.ConfigurationExtensions.AddSettings(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add settings
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:API.Files.Configuration.ConfigurationExtensions.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add settings
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:API.Files.Configuration.ConfigurationExtensions.AddDbContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add db context
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="T:API.Files.Controllers.FilesController">
+            <summary>
+            Files controller
+            </summary>
+        </member>
         <member name="F:API.Files.Controllers.FilesController._fileService">
             <summary>
             File service
             </summary>
         </member>
-        <member name="M:API.Files.Controllers.FilesController.#ctor(Business.Files.Services.FileService)">
+        <member name="M:API.Files.Controllers.FilesController.#ctor(Business.Files.Interfaces.IFileService)">
             <summary>
             Constructor
             </summary>
@@ -100,6 +131,35 @@
             <summary>
             Original name
             </summary>
+        </member>
+        <member name="T:API.Files.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:API.Files.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Startup
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:API.Files.Startup.Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="M:API.Files.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:API.Files.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
         </member>
     </members>
 </doc>
