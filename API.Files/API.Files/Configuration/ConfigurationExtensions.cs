@@ -43,7 +43,7 @@ namespace API.Files.Configuration
         /// <param name="configuration"></param>
         public static void AddSettings(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton<IFileSettings>(configuration.GetSection("FileSettings").Get<FileSettings>());
+            services.AddSingleton<IFileSettings>(configuration.GetSection("FilesSettings").Get<FileSettings>());
         }
 
         /// <summary>
