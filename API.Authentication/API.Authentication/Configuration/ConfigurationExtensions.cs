@@ -2,6 +2,7 @@
 using Business.Authentication.Interfaces;
 using Business.Authentication.Models;
 using Business.Authentication.Services;
+using Business.Authentication.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
