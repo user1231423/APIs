@@ -21,6 +21,37 @@
             </summary>
             <param name="filterContext"></param>
         </member>
+        <member name="T:API.Authentication.Configuration.ConfigurationExtensions">
+            <summary>
+            Configuration extensions
+            </summary>
+        </member>
+        <member name="M:API.Authentication.Configuration.ConfigurationExtensions.ConfigureCulture(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configure culture
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:API.Authentication.Configuration.ConfigurationExtensions.AddSettings(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add settings
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:API.Authentication.Configuration.ConfigurationExtensions.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add settings
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:API.Authentication.Configuration.ConfigurationExtensions.AddDbContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add db context
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
         <member name="T:API.Authentication.Controllers.UsersController">
             <summary>
             User controller
@@ -31,11 +62,12 @@
             User service
             </summary>
         </member>
-        <member name="M:API.Authentication.Controllers.UsersController.#ctor(Business.Authentication.Services.UserService)">
+        <member name="M:API.Authentication.Controllers.UsersController.#ctor(Business.Authentication.Interfaces.IUserService)">
             <summary>
             Constructor
             </summary>
             <param name="userService"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
         </member>
         <member name="M:API.Authentication.Controllers.UsersController.Authenticate(Business.Authentication.Models.AuthenticateRequest)">
             <summary>
@@ -170,6 +202,53 @@
             <summary>
             Update date
             </summary>
+        </member>
+        <member name="T:API.Authentication.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:API.Authentication.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:API.Authentication.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Host builder
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Authentication.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:API.Authentication.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:API.Authentication.Startup.Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="M:API.Authentication.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:API.Authentication.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
         </member>
     </members>
 </doc>

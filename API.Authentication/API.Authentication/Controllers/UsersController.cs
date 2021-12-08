@@ -2,7 +2,7 @@
 {
     using API.Authentication.DTO.Users;
     using Business.Authentication.Attributes;
-    using Business.Authentication.Middleware;
+    using Business.Authentication.Interfaces;
     using Business.Authentication.Models;
     using Business.Authentication.Services;
     using Common.Encoding.Hash;
@@ -25,15 +25,16 @@
         /// <summary>
         /// User service
         /// </summary>
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="userService"></param>
-        public UsersController(UserService userService)
+        /// <exception cref="ArgumentNullException"></exception>
+        public UsersController(IUserService userService)
         {
-            _userService = userService;
+            _userService = userService ?? throw new ArgumentNullException(nameof(userService)); ;
         }
 
         /// <summary>
@@ -42,11 +43,11 @@
         /// <param name="authenticate"></param>
         /// <returns></returns>
         [HttpPost("Authenticate")]
-        public ActionResult Authenticate(AuthenticateRequest authenticate)
+        public async Task<ActionResult> Authenticate(AuthenticateRequest authenticate)
         {
-            var authenticated = _userService.Authenticate(authenticate);
+            AuthenticateResponse authenticated = await _userService.AuthenticateAsync(authenticate);
 
-            return Ok(new { authenticated.Token });
+            return Ok(authenticated.Token);
         }
 
         /// <summary>
@@ -56,10 +57,10 @@
         /// <returns></returns>
         [HttpGet("List")]
         [Authorize]
-        public ActionResult List([FromQuery] PaginationParams pagination)
+        public async Task<ActionResult> List([FromQuery] PaginationParams pagination)
         {
             //List users
-            var users = _userService.List(pagination);
+            var users = await _userService.ListAsync(pagination);
 
             //Add pagination header on response
             Response.Headers.Add("x-pagination", JsonConvert.SerializeObject(users.GetMetaData()));
@@ -85,10 +86,10 @@
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
             //Load user
-            var user = _userService.Load(id);
+            var user = await _userService.LoadAsync(id);
 
             //Build user DTO
             var userDTO = new UserDTO()
@@ -125,7 +126,7 @@
             };
 
             //Save user obj and return saved id
-            return Ok(await _userService.Save(user));
+            return Ok(await _userService.SaveAsync(user));
         }
 
         /// <summary>
@@ -145,7 +146,7 @@
             };
 
             //Save user obj and return saved id
-            return Ok(await _userService.Update(id, user));
+            return Ok(await _userService.UpdateAsync(id, user));
         }
 
         /// <summary>
@@ -157,7 +158,7 @@
         public async Task<ActionResult> Delete(int id)
         {
             //Delete user obj and return deleted id
-            return Ok(await _userService.Delete(id));
+            return Ok(await _userService.DeleteAsync(id));
         }
     }
 }

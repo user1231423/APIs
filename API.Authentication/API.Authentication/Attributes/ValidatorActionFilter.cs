@@ -22,9 +22,7 @@ namespace API.Authentication.Attributes
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (!filterContext.ModelState.IsValid)
-            {
                 filterContext.Result = new BadRequestObjectResult(filterContext.ModelState);
-            }
         }
 
         /// <summary>
