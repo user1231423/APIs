@@ -47,7 +47,7 @@ namespace API.Authentication.Configuration
         /// <param name="configuration"></param>
         public static void AddSettings(this IServiceCollection services, IConfiguration configuration)
 		{
-			services.AddSingleton<IJwtSettings>(configuration.GetSection("JWTSettings").Get<JwtSettings>());
+			services.AddSingleton<IJwtSettings>(configuration.GetSection("JwtSettings").Get<JwtSettings>());
 		}
 
         /// <summary>
