@@ -1,8 +1,8 @@
-﻿using API.Authentication.Database;
-using Business.Authentication.Interfaces;
+﻿using Business.Authentication.Interfaces;
 using Business.Authentication.Models;
 using Business.Authentication.Services;
 using Business.Authentication.Settings;
+using Data.Authentication.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
@@ -56,7 +56,7 @@ namespace API.Authentication.Configuration
         /// <param name="services"></param>
 		public static void AddServices(this IServiceCollection services)
 		{
-			services.AddSingleton<IUserService, UserService>();
+			services.AddScoped<IUserService, UserService>();
 			services.AddSingleton<IJwtService, JwtService>();
 		}
 
@@ -67,7 +67,7 @@ namespace API.Authentication.Configuration
         /// <param name="configuration"></param>
         public static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<AuthenticationDbContext>(options => options.UseNpgsql(configuration["ConnectionStrings:AuthConnectionString"]));
+            services.AddDbContext<AuthenticationDbContext>(options => options.UseNpgsql(configuration["ConnectionStrings:AuthConnectionString"], b => b.MigrationsAssembly("API.Authentication")));
         }
     }
 }
