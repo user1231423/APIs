@@ -41,7 +41,7 @@ namespace API.Authentication
 
             services.ConfigureCulture();
 
-            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true);
+            //services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true);
 
             services.AddSwaggerGen(c =>
             {
