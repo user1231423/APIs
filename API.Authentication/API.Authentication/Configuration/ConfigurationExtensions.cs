@@ -2,6 +2,8 @@
 using Business.Authentication.Models;
 using Business.Authentication.Services;
 using Business.Authentication.Settings;
+using Common.Services.Interfaces;
+using Common.Services.Services;
 using Data.Authentication.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
@@ -58,6 +60,7 @@ namespace API.Authentication.Configuration
 		{
 			services.AddScoped<IUserService, UserService>();
 			services.AddSingleton<IJwtService, JwtService>();
+            services.AddSingleton<IConfigurationService, ConfigurationService>();
 		}
 
         /// <summary>

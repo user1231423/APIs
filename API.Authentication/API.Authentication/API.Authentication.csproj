@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\..\Common\Common.ExceptionHandler\Common.ExceptionHandler\Common.ExceptionHandler.csproj" />
     <ProjectReference Include="..\..\..\Common\Common.Extensions\Common.Extensions\Common.Extensions.csproj" />
     <ProjectReference Include="..\..\..\Common\Common.Pagination\Common.Pagination\Common.Pagination.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.Services\Common.Services.csproj" />
     <ProjectReference Include="..\..\..\Data\Data.Authentication.Globalization\Data.Authentication.Globalization\Data.Authentication.Globalization.csproj" />
     <ProjectReference Include="..\..\..\Data\Data.Authentication\Data.Authentication\Data.Authentication.csproj" />
   </ItemGroup>

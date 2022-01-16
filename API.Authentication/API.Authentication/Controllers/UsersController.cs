@@ -56,7 +56,7 @@
         /// <param name="pagination"></param>
         /// <returns></returns>
         [HttpGet("List")]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult> List([FromQuery] PaginationParams pagination)
         {
             //List users
