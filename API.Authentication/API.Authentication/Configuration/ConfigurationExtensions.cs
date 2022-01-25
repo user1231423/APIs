@@ -2,6 +2,8 @@
 using Business.Authentication.Models;
 using Business.Authentication.Services;
 using Business.Authentication.Settings;
+using Common.Data.Interfaces;
+using Common.Data.Repositories;
 using Common.Services.Interfaces;
 using Common.Services.Services;
 using Data.Authentication.Database;
@@ -58,10 +60,20 @@ namespace API.Authentication.Configuration
         /// <param name="services"></param>
 		public static void AddServices(this IServiceCollection services)
 		{
-			services.AddScoped<IUserService, UserService>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IUserService, UserService>();
 			services.AddSingleton<IJwtService, JwtService>();
             services.AddSingleton<IConfigurationService, ConfigurationService>();
 		}
+
+        /// <summary>
+        /// Add auto mapper
+        /// </summary>
+        /// <param name="services"></param>
+        public static void AutoMapper(this IServiceCollection services)
+        {
+            services.AddAutoMapper(typeof(Startup));
+        }
 
         /// <summary>
         /// Add db context
