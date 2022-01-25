@@ -2,8 +2,11 @@ namespace API.Authentication
 {
     using API.Authentication.Attributes;
     using API.Authentication.Configuration;
+    using API.Authentication.Validators.User;
     using Business.Authentication.Middleware;
     using Common.ExceptionHandler.Middleware;
+    using FluentValidation;
+    using FluentValidation.AspNetCore;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -54,10 +57,18 @@ namespace API.Authentication
             
             services.AddServices();
 
-            services.AddMvc(options =>
-            {
-                options.Filters.Add(typeof(ValidatorActionFilter)); //Add model validator
-            });
+            services.AutoMapper();
+
+            services.AddControllers()
+                .AddFluentValidation(s =>
+                {
+                    s.RegisterValidatorsFromAssemblyContaining<Startup>();
+                });
+
+            //services.AddMvc(options =>
+            //{
+            //    options.Filters.Add(typeof(ValidatorActionFilter)); //Add model validator
+            //});
         }
 
         /// <summary>

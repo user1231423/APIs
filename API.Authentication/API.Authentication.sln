@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Extensions", "..\..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Encoding", "..\..\Common\Common.Encoding\Common.Encoding\Common.Encoding.csproj", "{E7834637-CA81-41AD-83F4-76F55E960E98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Services", "..\..\Common\Common.Services\Common.Services.csproj", "{B2BF4C92-595C-4727-B2C1-8FA2B543B47F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Services", "..\..\Common\Common.Services\Common.Services.csproj", "{B2BF4C92-595C-4727-B2C1-8FA2B543B47F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Data", "..\..\Common\Common.Data\Common.Data.csproj", "{1526B641-B24D-4347-95AA-7AE8B6D2E5BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{B2BF4C92-595C-4727-B2C1-8FA2B543B47F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2BF4C92-595C-4727-B2C1-8FA2B543B47F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2BF4C92-595C-4727-B2C1-8FA2B543B47F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1526B641-B24D-4347-95AA-7AE8B6D2E5BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1526B641-B24D-4347-95AA-7AE8B6D2E5BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1526B641-B24D-4347-95AA-7AE8B6D2E5BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1526B641-B24D-4347-95AA-7AE8B6D2E5BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
