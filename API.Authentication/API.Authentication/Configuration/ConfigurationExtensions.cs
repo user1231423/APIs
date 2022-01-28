@@ -2,6 +2,10 @@
 using Business.Authentication.Models;
 using Business.Authentication.Services;
 using Business.Authentication.Settings;
+using Common.Cache.Enums;
+using Common.Cache.Interfaces;
+using Common.Cache.Services;
+using Common.Cache.Settings;
 using Common.Data.Interfaces;
 using Common.Data.Repositories;
 using Common.Services.Interfaces;
@@ -12,6 +16,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -52,7 +57,28 @@ namespace API.Authentication.Configuration
         public static void AddSettings(this IServiceCollection services, IConfiguration configuration)
 		{
 			services.AddSingleton<IJwtSettings>(configuration.GetSection("JwtSettings").Get<JwtSettings>());
+			services.AddSingleton<ICacheSettings>(configuration.GetSection("CacheSettings").Get<CacheSettings>());
 		}
+
+        /// <summary>
+        /// Add cache
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="cacheSettings"></param>
+        public static void AddCacheServices(this IServiceCollection services, IConfiguration configuration)
+		{
+            services.AddMemoryCache();
+            services.AddSingleton<IMemoryCacheService, MemoryCacheService>();
+            
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration.GetConnectionString("RedisConnectionString");
+                options.InstanceName = "Api.Authentication";
+            });
+            
+            services.AddSingleton<IRedisCacheService, RedisCacheService>();
+        }
 
         /// <summary>
         /// Add settings

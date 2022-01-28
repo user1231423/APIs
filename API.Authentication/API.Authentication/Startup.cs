@@ -4,6 +4,7 @@ namespace API.Authentication
     using API.Authentication.Configuration;
     using API.Authentication.Validators.User;
     using Business.Authentication.Middleware;
+    using Common.Cache.Settings;
     using Common.ExceptionHandler.Middleware;
     using FluentValidation;
     using FluentValidation.AspNetCore;
@@ -54,7 +55,9 @@ namespace API.Authentication
             services.AddSettings(Configuration);
 
             services.AddDbContext(Configuration);
-            
+
+            services.AddCacheServices(Configuration);
+
             services.AddServices();
 
             services.AutoMapper();

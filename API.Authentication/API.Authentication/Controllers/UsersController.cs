@@ -56,9 +56,7 @@
         [HttpPost("Authenticate")]
         public async Task<ActionResult> Authenticate(AuthenticateRequest authenticate)
         {
-            AuthenticateResponse authenticated = await _userService.AuthenticateAsync(authenticate);
-
-            return Ok(authenticated.Token);
+            return Ok(await _userService.AuthenticateAsync(authenticate));
         }
 
         /// <summary>
